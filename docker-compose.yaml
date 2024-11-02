@@ -1,24 +1,30 @@
 services:
   frontend:
     build: frontend
+    image: iftiaz03/ecommerce-template-frontend:latest  
     ports:
       - "5173:5173"
     networks:
       - ecommerce
+
   admin:
     build: admin
+    image: iftiaz03/ecommerce-template-admin:latest 
     ports:
       - "5174:5174"
     networks:
       - ecommerce
+
   backend:
     build: backend
+    image: iftiaz03/ecommerce-template-backend:latest  
     ports:
       - "4000:4000"
     networks:
       - ecommerce
     depends_on:
       - mongo
+
   mongo:
     image: mongo:latest
     ports:
@@ -35,4 +41,3 @@ networks:
 volumes:
   mongo-data:
     driver: local
-    
